@@ -603,7 +603,9 @@ static void fill_argv(char **argv, struct pppd_compat_pd *pd, char *path)
 {
 	argv[0] = path;
 	argv[1] = pd->ses->ifname;
-	argv[2] = "none";
+	// argv[2] = "none";
+	// Server ifname in unused param - useful for netx shaping
+	argv[2] = pd->ses->ctrl->ifname;
 	argv[3] = "0";
 	u_inet_ntoa(pd->ipv4_addr, argv[4]);
 	u_inet_ntoa(pd->ipv4_peer_addr, argv[5]);
